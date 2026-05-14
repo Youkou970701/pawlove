@@ -5,11 +5,11 @@
   "rewrites": [
     {
       "source": "/api/(.*)",
-      "destination": "ttps://pawlove-m9mg.onrender.com/api/$1"
+      "destination": "https://pawlove-m9mg.onrender.com/api/$1"
     },
     {
       "source": "/socket.io/(.*)",
-      "destination": "ttps://pawlove-m9mg.onrender.com/socket.io/$1"
+      "destination": "https://pawlove-m9mg.onrender.com/socket.io/$1"
     }
   ],
   "headers": [
