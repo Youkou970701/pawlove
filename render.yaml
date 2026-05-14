@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: pawlove-api
+    runtime: node
+    buildCommand: cd server && npm install
+    startCommand: cd server && node index.js
+    envVars:
+      - key: PORT
+        value: 10000
+    plan: free

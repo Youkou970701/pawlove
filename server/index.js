@@ -1,13 +1,13 @@
 const express = require('express');
 const { createServer } = require('http');
 const { Server } = require('socket.io');
+const cors = require('cors');
 const fs = require('fs');
 const path = require('path');
 
 const DATA_FILE = path.join(__dirname, 'data.json');
 const STATIC_DIR = path.join(__dirname, '..', 'client', 'dist');
 
-// In-memory data store
 let data = { couples: {} };
 
 function loadData() {
@@ -70,12 +70,19 @@ loadData();
 
 const app = express();
 const httpServer = createServer(app);
-const io = new Server(httpServer, {
-  cors: { origin: "*", methods: ["GET", "POST"] }
-});
 
-app.use(require('cors')());
+// CORS for frontend
+app.use(cors({
+  origin: '*',
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+}));
 app.use(express.json());
+
+const io = new Server(httpServer, {
+  cors: { origin: "*", methods: ["GET", "POST"] },
+  path: '/socket.io'
+});
 
 // REST API
 app.post('/api/couple', (req, res) => {
@@ -120,7 +127,6 @@ io.on('connection', (socket) => {
     if (!couple || !couple.pet) return;
 
     const pet = couple.pet;
-    let updates = {};
 
     if (pet.stage === 'egg') {
       if (type === 'warmth') {
@@ -130,6 +136,8 @@ io.on('connection', (socket) => {
           pet.stage = 'puppy';
           pet.hatchedAt = new Date().toISOString();
         }
+      } else if (type === 'name') {
+        pet.name = value;
       }
     } else {
       switch (type) {
@@ -197,7 +205,7 @@ io.on('connection', (socket) => {
   });
 });
 
-// Stat decay every minute + evolution check
+// Stat decay + evolution every minute
 setInterval(() => {
   for (const code of Object.keys(data.couples)) {
     const couple = data.couples[code];
@@ -210,7 +218,6 @@ setInterval(() => {
     pet.energy = Math.min(100, pet.energy + 0.5);
     pet.updatedAt = new Date().toISOString();
 
-    // Evolution: puppy -> adult after 3 days OR all stats >= 90 for 10 mins
     if (pet.stage === 'puppy') {
       const daysSinceHatch = (Date.now() - new Date(pet.hatchedAt).getTime()) / 86400000;
       const avgStats = (pet.hunger + pet.happiness + pet.cleanliness + pet.energy) / 4;
@@ -225,7 +232,7 @@ setInterval(() => {
   saveData();
 }, 60000);
 
-// Serve frontend static files
+// Serve frontend static files (for production)
 if (fs.existsSync(STATIC_DIR)) {
   app.use(express.static(STATIC_DIR));
   app.get('*', (req, res) => {
@@ -235,7 +242,7 @@ if (fs.existsSync(STATIC_DIR)) {
   });
 }
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
 httpServer.listen(PORT, () => {
   console.log(`PawLove server running on port ${PORT}`);
 });
