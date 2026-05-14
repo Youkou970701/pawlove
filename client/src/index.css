@@ -1,0 +1,46 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  background-color: #FFF0F3;
+  color: #333;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+.egg-shake {
+  animation: eggShake 2s ease-in-out infinite;
+}
+
+@keyframes eggShake {
+  0%, 100% { transform: rotate(0deg) scale(1); }
+  10% { transform: rotate(-5deg) scale(1.02); }
+  20% { transform: rotate(5deg) scale(1.02); }
+  30% { transform: rotate(-3deg) scale(1.01); }
+  40% { transform: rotate(3deg) scale(1.01); }
+  50% { transform: rotate(0deg) scale(1); }
+}
+
+.pet-bounce {
+  animation: petBounce 0.6s ease-in-out;
+}
+
+@keyframes petBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+
+.stat-bar {
+  transition: width 0.5s ease, background-color 0.3s ease;
+}
+
+.warmth-pulse {
+  animation: warmthPulse 1.5s ease-in-out infinite;
+}
+
+@keyframes warmthPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(255, 143, 171, 0.4); }
+  50% { box-shadow: 0 0 20px 10px rgba(255, 143, 171, 0.2); }
+}

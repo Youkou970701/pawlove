@@ -1,0 +1,16 @@
+{
+  "name": "pawlove-server",
+  "version": "1.0.0",
+  "private": true,
+  "main": "index.js",
+  "scripts": {
+    "dev": "node index.js",
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.3",
+    "localtunnel": "^2.0.2",
+    "socket.io": "^4.7.5"
+  }
+}

@@ -1,0 +1,90 @@
+{
+  "couples": {
+    "BQ5PO0": {
+      "id": "1778689465675",
+      "code": "BQ5PO0",
+      "createdAt": "2026-05-13T16:24:25.675Z",
+      "pet": {
+        "id": "mp49s7d7fbbv",
+        "stage": "egg",
+        "name": null,
+        "warmth": 0,
+        "hunger": 100,
+        "happiness": 100,
+        "cleanliness": 100,
+        "energy": 100,
+        "hatchedAt": null,
+        "createdAt": "2026-05-13T16:24:25.675Z",
+        "updatedAt": "2026-05-13T16:24:25.675Z"
+      },
+      "tasks": [],
+      "answers": [],
+      "photos": [],
+      "diaries": [],
+      "dailyTasks": [
+        {
+          "id": "good_morning",
+          "text": "互相说一句早安",
+          "completed": false,
+          "reward": 15
+        },
+        {
+          "id": "share_weather",
+          "text": "分享今天的天气",
+          "completed": false,
+          "reward": 10
+        },
+        {
+          "id": "exchange_photo",
+          "text": "交换一张今日照片",
+          "completed": false,
+          "reward": 20
+        }
+      ],
+      "lastTaskDate": "2026-05-14"
+    },
+    "0HR3JI": {
+      "id": "1778690835995",
+      "code": "0HR3JI",
+      "createdAt": "2026-05-13T16:47:15.995Z",
+      "pet": {
+        "id": "mp4alkpn2k9p",
+        "stage": "egg",
+        "name": null,
+        "warmth": 0,
+        "hunger": 100,
+        "happiness": 100,
+        "cleanliness": 100,
+        "energy": 100,
+        "hatchedAt": null,
+        "createdAt": "2026-05-13T16:47:15.995Z",
+        "updatedAt": "2026-05-13T16:47:15.995Z"
+      },
+      "tasks": [],
+      "answers": [],
+      "photos": [],
+      "diaries": [],
+      "dailyTasks": [
+        {
+          "id": "good_morning",
+          "text": "互相说一句早安",
+          "completed": false,
+          "reward": 15
+        },
+        {
+          "id": "share_weather",
+          "text": "分享今天的天气",
+          "completed": false,
+          "reward": 10
+        },
+        {
+          "id": "exchange_photo",
+          "text": "交换一张今日照片",
+          "completed": false,
+          "reward": 20
+        }
+      ],
+      "lastTaskDate": "2026-05-13"
+    }
+  }
+}
